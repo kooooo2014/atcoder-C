@@ -478,6 +478,14 @@ A～Bまでの総和
 		cout << is_prime(57) << endl; // 0
 	}
 
+これも素数判定
+bool is_prime(long long n) {  // is n prime or not
+    for (long long i = 2; i * i <= n; i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+
 配列を逆にする
 	// dataのi番目以降の要素を逆順にした配列を返す
 	vector<int> reverse_array_from_i(vector<int> &data, int i) {
