@@ -6,25 +6,19 @@ using namespace atcoder;
 #define revrep(i, n, s) for (int i = (int)(n); i >= (s); i--)
 #define all(v) v.begin(), v.end()
 typedef long long LL;
+map<string, int> mp;
 
 int main() {
-	int N, ans = 0;
+	int N;
 	string s;
 	cin >> N;
 
-	vector<int> vec(N);
-	vector<vector<int>> vec(N, vector<int>(2));
 	rep (i, 0, N) {
-		rep (j, 0, N) {
-			cin >> vec.at(i);
-			// cin >> vec.at(i).at(j);
+		cin >> s;
+		if (mp.count(s) == 0) {
+			printf("%d\n", i+1);
+			mp[s] = 1;
 		}
 	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
-
-		}
-	}
-	cout << ans << endl;
 	return 0;
 }

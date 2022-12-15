@@ -8,23 +8,15 @@ using namespace atcoder;
 typedef long long LL;
 
 int main() {
-	int N, ans = 0;
-	string s;
-	cin >> N;
+	int Q, t, x;
+	cin >> Q;
 
-	vector<int> vec(N);
-	vector<vector<int>> vec(N, vector<int>(2));
-	rep (i, 0, N) {
-		rep (j, 0, N) {
-			cin >> vec.at(i);
-			// cin >> vec.at(i).at(j);
-		}
+	deque<int> d;
+	rep (i, 0, Q) {
+		cin >> t >> x;
+		if (t == 1) d.push_front(x);
+		else if (t == 2) d.push_back(x);
+		else printf("%d\n", d.at(x-1));
 	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
-
-		}
-	}
-	cout << ans << endl;
 	return 0;
 }

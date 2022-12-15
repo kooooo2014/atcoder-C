@@ -8,21 +8,22 @@ using namespace atcoder;
 typedef long long LL;
 
 int main() {
-	int N, ans = 0;
-	string s;
-	cin >> N;
+	LL N, P, Q, sum = 0, ans = 0;
+	cin >> N >> P >> Q;
 
-	vector<int> vec(N);
-	vector<vector<int>> vec(N, vector<int>(2));
+	vector<LL> A(N);
+	rep (i, 0, N) cin >> A[i];
+
 	rep (i, 0, N) {
-		rep (j, 0, N) {
-			cin >> vec.at(i);
-			// cin >> vec.at(i).at(j);
-		}
-	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
-
+		rep (j, i+1, N) {
+			rep (k, j+1, N) {
+				rep (l, k+1, N) {
+					rep (m, l+1, N) {
+						sum = ((A[i] * A[j]) % P) * A[k] % P * A[l] % P * A[m] % P;
+						if (sum % P == Q) ans ++;
+					}
+				}
+			}
 		}
 	}
 	cout << ans << endl;

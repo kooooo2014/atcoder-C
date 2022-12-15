@@ -6,25 +6,26 @@ using namespace atcoder;
 #define revrep(i, n, s) for (int i = (int)(n); i >= (s); i--)
 #define all(v) v.begin(), v.end()
 typedef long long LL;
+using Graph = vector<vector<int>>;
 
 int main() {
-	int N, ans = 0;
-	string s;
-	cin >> N;
+	int N, M, a, b, ans = 0;
+	cin >> N >> M;
+	Graph G(N+1);
 
-	vector<int> vec(N);
-	vector<vector<int>> vec(N, vector<int>(2));
-	rep (i, 0, N) {
-		rep (j, 0, N) {
-			cin >> vec.at(i);
-			// cin >> vec.at(i).at(j);
-		}
+	rep (i, 0, M) {
+		cin >> a >> b;
+		G[a].push_back(b);
+		G[b].push_back(a);
 	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
 
+	rep (i, 1, N+1) {
+		int flag = 0;
+		rep (j, 0, G[i].size()) {
+			if (i > G[i][j]) flag ++;
 		}
+		if (flag == 1) ans ++;
 	}
-	cout << ans << endl;
+	printf("%d\n", ans);
 	return 0;
 }

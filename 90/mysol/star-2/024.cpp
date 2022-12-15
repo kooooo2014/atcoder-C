@@ -8,23 +8,20 @@ using namespace atcoder;
 typedef long long LL;
 
 int main() {
-	int N, ans = 0;
-	string s;
-	cin >> N;
+	LL N, K, ans = 0;
+	cin >> N >> K;
 
-	vector<int> vec(N);
-	vector<vector<int>> vec(N, vector<int>(2));
-	rep (i, 0, N) {
-		rep (j, 0, N) {
-			cin >> vec.at(i);
-			// cin >> vec.at(i).at(j);
-		}
-	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
+	vector<LL> A(N);
+	vector<LL> B(N);
+	rep (i, 0, N) cin >> A[i];
+	rep (i, 0, N) cin >> B[i];
+	rep (i, 0, N) ans += abs(A[i] - B[i]);
 
-		}
+	if (ans > K) cout << "No" << endl;
+	else {
+		ans = K - ans;
+		if (ans % 2 == 0) cout << "Yes" << endl;
+		else cout << "No" << endl;
 	}
-	cout << ans << endl;
 	return 0;
 }
