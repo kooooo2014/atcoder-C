@@ -6,17 +6,20 @@ using namespace atcoder;
 #define revrep(i, n, s) for (int i = (int)(n); i >= (s); i--)
 #define all(v) v.begin(), v.end()
 typedef long long LL;
+long double PI = 3.14159265358979;
 
 int main() {
-	double T, L, X, Y, Z, ans = 0, XY = 0;
-	int Q, E;
+	long double T, L, X, Y, E;
+	int Q;
 	cin >> T >> L >> X >> Y >> Q;
 
-	XY = pow(X*X + Y*Y, 1/2);
-	rep (i, 0, Q) {
+	rep (i, 1, Q+1) {
 		cin >> E;
-		Z = (E / T) * L;
-		printf("%lld\n", ans);
+		long double y = -(L / 2.0) * sin(2.0 * PI * E / T);
+		long double z = L / 2.0 - (L / 2.0) * cos(2.0 * PI * E / T);
+		long double dy = sqrt((Y - y) * (Y - y) + X * X);
+		long double kaku = atan2(z, dy);
+		printf("%.12Lf\n", kaku * 180.0L / PI);
 	}
 	return 0;
 }
