@@ -312,9 +312,9 @@
 ・順列全列挙
 	do {
         for (int i = 0; i < N; i ++) {
-
+			// vecが直接並び変わっているイメージ
 		}
-    } while (next_permutation(v.begin(), v.end()));
+    } while (next_permutation(vec.begin(), vec.end()));
 ・階乗
 	int factorial(int n)
 	{
