@@ -7,22 +7,23 @@ using namespace atcoder;
 #define all(v) v.begin(), v.end()
 typedef long long LL;
 const int INF = 1 << 30;
+const LL MOD = 1000000007;
 
 int main() {
-	int N, K, A, B;
-	LL ans = 0;
-	cin >> N >> K;
-	vector<LL> vec(2*N);
+	int N, a;
+	LL ans = 1;
+	cin >> N;
+	vector<LL> A(N, 0);
 
 	rep (i, 0, N) {
-		cin >> A >> B;
-		vec[2 * i] = A - B;
-		vec[2 * i + 1] = B;
+		rep (j, 0, 6) {
+			cin >> a;
+			A[i] += a;
+		}
+		ans *= A[i] % MOD;
+		ans %= MOD;
 	}
-	sort(all(vec));
-	reverse(all(vec));
 
-	rep (i, 0, K) ans += vec[i];
 	printf("%lld\n", ans);
 	return 0;
 }
