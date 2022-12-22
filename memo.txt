@@ -517,6 +517,19 @@ bool is_prime(long long n) {  // is n prime or not
 A / Bの切り上げ
 (A + B - 1) / B;
 
+繰り返し2乗法
+int binpower(int a, long long b) {
+	int ans = 1;
+	while (b != 0) {
+		if (b % 2 == 1) {
+			ans = (long long)(ans)*a % MOD;
+		}
+		a = (long long)(a)*a % MOD;
+		b /= 2;
+	}
+	return ans;
+}
+
 pair, tuple, auto(https://atcoder.jp/contests/apg4b/tasks/APG4b_z)
 構造体（https://atcoder.jp/contests/apg4b/tasks/APG4b_ab）
 ビット演算（https://atcoder.jp/contests/apg4b/tasks/APG4b_ac）
@@ -531,6 +544,58 @@ y3 = y2 + X;
 x4 = x1 - Y;
 y4 = y1 + X;
 
+逆元
+// b^-1 ≡ u (mod m)
+// mod mの世界におけるbの逆元を求める関数 return u;
+// a % b　≡　a * b^-1 ≡ a * u (mod m)が成り立つ
+LL modinv(LL b, LL m) {
+    LL tmp = m, u = 1, v = 0;
+
+    while (tmp) {
+        LL t = b / tmp;
+        b -= t * tmp;
+        u -= t * v;
+
+		swap(b, tmp);
+		swap(u, v);
+    }
+
+    u %= m;
+    if (u < 0) u += m;
+
+    return u;
+}
+
+二項係数 nCk (mod p)
+	const int MAX = 510000;
+	const int MOD = 1000000007;
+	LL fac[MAX], finv[MAX], inv[MAX];
+
+	// テーブルを作る前処理
+	void COMinit() {
+		fac[0] = fac[1] = 1;
+		finv[0] = finv[1] = 1;
+		inv[1] = 1;
+		rep (i, 2, MAX) {
+			fac[i] = fac[i - 1] * i % MOD;
+			inv[i] = MOD - inv[MOD%i] * (MOD / i) % MOD;
+			finv[i] = finv[i - 1] * inv[i] % MOD;
+		}
+	}
+
+	// 二項係数計算
+	LL COM(int n, int k){
+		if (n < k) return 0;
+		if (n < 0 || k < 0) return 0;
+		return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;
+	}
+
+	int main() {
+		// 前処理
+		COMinit();
+		// 計算例
+		cout << COM(100000, 50000) << endl;
+	}
 
 Easy
 68:?(vector, map, tuple, pair)

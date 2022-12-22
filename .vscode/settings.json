@@ -33,5 +33,6 @@
 		"iomanip": "cpp",
 		"algorithm": "cpp",
 		"*.tcc": "cpp"
-	}
+	},
+	"C_Cpp.errorSquiggles": "disabled"
 }
