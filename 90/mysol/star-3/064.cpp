@@ -10,20 +10,34 @@ const int INF = 1 << 30;
 const LL MOD = 1000000007;
 
 int main() {
-	int N, a;
-	LL ans = 1;
-	cin >> N;
-	vector<LL> A(N, 0);
+	int N, Q, L, R, V;
+	LL ans = 0;
+	cin >> N >> Q;
+	vector<LL> A(N+1);
+	vector<LL> diff(N);
 
-	rep (i, 0, N) {
-		rep (j, 0, 6) {
-			cin >> a;
-			A[i] += a;
-		}
-		ans *= A[i] % MOD;
-		ans %= MOD;
+	rep (i, 1, N+1) cin >> A[i];
+	rep (i, 1, N) {
+		diff[i] = A[i+1] - A[i];
+		ans += abs(diff[i]);
 	}
 
-	printf("%lld\n", ans);
+	rep (i, 0, Q) {
+		cin >> L >> R >> V;
+		L --;
+
+		LL before = abs(diff[L]);
+		if (R <= N-1) before += abs(diff[R]);
+
+		if (L >= 1) diff[L] += V;
+		if (R <= N-1) diff[R] -= V;
+
+		LL after = abs(diff[L]);
+		if (R <= N-1) after += abs(diff[R]);
+
+		ans += (after - before);
+		printf("%lld\n", ans);
+	}
+
 	return 0;
 }
