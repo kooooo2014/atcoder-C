@@ -278,6 +278,10 @@
 	最小値　最大値
 		int max = *max_element(v.begin(), v.end());
 		int min = *min_element(v.begin(), v.end());
+	ex
+		vector<pair<int, string>> mount(N);
+		cin >> mount[i].second >> mount[i].first;
+		sort(mount.begin(), mount.end(), greater{});
 
 ・各行で長さが違う２次元配列をつくりたいとき
 		vector<vector<int>> vec(N + 1, vector<int>(1, 0));
