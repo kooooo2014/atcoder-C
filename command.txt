@@ -1,3 +1,0 @@
-./gcc.sh 068
-
-g++ 061.cpp -std=c++17 -I /home/kooo2/atcoder/c/include/
