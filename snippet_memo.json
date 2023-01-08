@@ -1,0 +1,194 @@
+{
+// input/output
+	"cin": {
+		"prefix": "cin",
+		"body": ["cin >> $1;"],
+		"description": "input C++"
+	},
+
+	"cout": {
+		"prefix": "co",
+		"body": ["cout << $1 << endl;"],
+		"description": "output C++"
+	},
+
+	"printf": {
+        "prefix": "print",
+        "body": [
+            "printf(\"%d\\n\", $1);",
+        ],
+        "description": "output C"
+    },
+
+// Loop
+	"while": {
+		"prefix": "while",
+		"body": ["while (${1:expression}) {", "\t${0:}", "}"],
+		"description": "while loop"
+	},
+
+	"single for loop": {
+        "prefix": "for1",
+        "body": [
+            "for (int i = 0; i < N; i ++) {",
+            "\t/* code */",
+            "}",
+        ],
+        "description": "single for loop"
+    },
+
+	"double for loop": {
+		"prefix": "for2",
+		"body": [
+			"for (int i = 0; i < count; i++) {",
+			"\tfor (int j = 0; j < count; j++) {",
+			"\t\t/* code */",
+			"\t}",
+			"}"
+		],
+		"description": "double for loop"
+	},
+
+	"triple for loop": {
+		"prefix": "for3",
+		"body": [
+			"for (int i = 0; i < count; i++) {",
+			"\tfor (int j = 0; j < count; j++) {",
+			"\t\tfor (int k =0; k < count; k++) {",
+			"\t\t\t/* code */",
+			"\t\t}",
+			"\t}",
+			"}"
+		],
+		"description": "triple for loop"
+	},
+
+// others
+	"sum_range": {
+		"prefix": "sum_range",
+		"body": [
+			"// (a ≦ b)が前提",
+            "int sum_range(int a, int b) {",
+            "\tif (a == b) return a;",
+            "\treturn sum_range(a, b - 1) + b;",
+            "}",
+		],
+		"description": "sum (A + A+1 + ... + B)"
+	},
+
+	"array_sum": {
+		"prefix": "array_sum",
+		"body": [
+			"// dataのi番目以降の要素の総和を計算する",
+            "int array_sum_from_i(vector<int> &data, int i) {",
+            "\tif (i == data.size()) return 0;",
+            "\tint s = array_sum_from_i(data, i + 1);",
+            "\treturn data.at(i) + s;",
+            "}",
+            "",
+            "// dataの全ての要素の総和を計算する",
+            "int array_sum(vector<int> &data) {",
+            "\treturn array_sum_from_i(data, 0);",
+            "}",
+            "",
+            "// array_sum(a)",
+		],
+		"description": "sum (A + A+1 + ... + B)"
+	},
+
+	"is_prime": {
+		"prefix": "is_prime",
+		"body": [
+			"//素数判定（0/1）",
+            "bool has_divisor(int N, int i) {",
+            "\tif (i == N) return false;",
+            "\tif (N % i == 0) return true;",
+            "\treturn has_divisor(N, i + 1);",
+            "}",
+            "",
+            "bool is_prime(int N) {",
+            "\tif (N == 1) return false;",
+            "\telse if (N == 2) return true;",
+            "\telse return !has_divisor(N, 2);",
+            "}",
+            "// is_prime(num)",
+		],
+		"description": "素数判定（0/1）"
+	},
+
+	"reverse_array": {
+		"prefix": "reverse_array",
+		"body": [
+			"// 配列を逆順にしたものを返す",
+            "vector<int> reverse_array_from_i(vector<int> &data, int i) {",
+            "\tif (i == data.size()) {",
+            "\t\tvector<int> empty_array(0);",
+            "\t\treturn empty_array;",
+            "\t}",
+            "",
+            "\tvector<int> tmp = reverse_array_from_i(data, i + 1); ",
+            "\ttmp.push_back(data.at(i)); ",
+            "\treturn tmp;",
+            "}",
+            "",
+            "vector<int> reverse_array(vector<int> &data) {",
+            "\treturn reverse_array_from_i(data, 0);",
+            "}",
+
+		],
+		"description": "配列を逆にする"
+	},
+
+// 全探索
+	"bit_search": {
+		"prefix": "bit_search",
+		"body": [
+			"int n = 3; //2^n",
+            "",
+            "for (int bit = 0; bit < (1 << n); ++bit) {",
+            "\tfor (int i = 0; i < n; ++i) {",
+            "\t\tif (bit & (1 << i)) //見ている桁のbit==1",
+            "\t\telse //bit==0",
+            "\t}",
+            "}",
+		],
+		"description": "bit全探索"
+	},
+
+//数学的解法
+	"permutation": {
+		"prefix": "permu",
+		"body": [
+			"do {",
+            "\tfor (int i = 0; i < N; i ++) {",
+            "\t\t/*code*/",
+            "\t}",
+            "} while (next_permutation(v.begin(), v.end()));",
+		],
+		"description": "順列全列挙"
+	},
+
+	"C!": {
+		"prefix": "C!",
+		"body": [
+			"int factorial(int n) {",
+            "\tint ret = 1;",
+            "\twhile (n > 1)",
+            "\t\tret *= n--;",
+            "\treturn ret;",
+            "}",
+		],
+		"description": "階乗"
+	},
+
+// vector
+	"vector": {
+		"prefix": "vec1",
+		"body": [
+			"vector<int> vec(N);",
+		],
+		"description": "single vector"
+	},
+
+
+}
