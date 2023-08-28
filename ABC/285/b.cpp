@@ -9,22 +9,18 @@ typedef long long LL;
 
 int main() {
 	int N, ans = 0;
-	string s;
-	cin >> N;
+	string S;
+	cin >> N >> S;
 
-	vector<int> vec(N);
-	vector<vector<int>> vec(N, vector<int>(2));
-	rep (i, 0, N) {
-		rep (j, 0, N) {
-			cin >> vec.at(i);
-			// cin >> vec.at(i).at(j);
+	for (int i = 1; i < N; i++) {
+		ans = N - i;
+		for (int j = 0; j+i < N; j++) {
+			if (S[j] == S[j+i]) {
+				ans = j;
+				break;
+			}
 		}
+		printf("%d\n", ans);
 	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
-
-		}
-	}
-	cout << ans << endl;
 	return 0;
 }

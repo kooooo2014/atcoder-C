@@ -8,22 +8,13 @@ using namespace atcoder;
 typedef long long LL;
 
 int main() {
-	int N, ans = 0;
-	string s;
-	cin >> N;
+	LL ans = 0;
+	string S;
+	cin >> S;
+	reverse(all(S));
 
-	vector<int> vec(N);
-	vector<vector<int>> vec(N, vector<int>(2));
-	rep (i, 0, N) {
-		rep (j, 0, N) {
-			cin >> vec.at(i);
-			// cin >> vec.at(i).at(j);
-		}
-	}
-	for (int i = 0; i < N; i++) {
-		for (int j = 0; j < N; j++) {
-
-		}
+	rep (i, 0, S.size()) {
+		ans += (LL)pow(26, i) * (LL)(S[i] - 'A' + 1);
 	}
 	cout << ans << endl;
 	return 0;
