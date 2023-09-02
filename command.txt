@@ -1,3 +1,8 @@
-./gcc.sh 068
+フォルダに移動
 
-g++ 061.cpp -std=c++17 -I /home/kooo2/atcoder/c/include/
+bashファイルを実行
+./gcc.sh ファイル名(a.cppならa)
+
+実行ファイルを実行、その後テストデータを入力
+./a.out
+
